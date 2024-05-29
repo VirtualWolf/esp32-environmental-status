@@ -1,4 +1,5 @@
 import os
+from machine import WDT
 from config import config
 from logger import publish_log_message
 from PiicoDev_RGB import PiicoDev_RGB
@@ -12,6 +13,9 @@ colours = {
     'light_green':  [100,255,100],
     'blue':         [0,255,255],
 }
+
+if config['disable_watchdog'] is not True:
+    wdt = WDT(timeout=120000)
 
 if os.uname().sysname == 'esp32':
     leds = PiicoDev_RGB(bright=config['led_brightness'], bus=0, sda=config['sda_pin'], scl=config['scl_pin'])
@@ -36,6 +40,9 @@ async def toggle_leds(is_on, client):
 async def update_leds(topic, payload):
     global leds
     global LEDS_ON
+
+    if config['disable_watchdog'] is not True:
+        wdt.feed()
 
     if LEDS_ON is False:
         return
