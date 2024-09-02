@@ -91,7 +91,7 @@ This will turn off the LEDs and they will remain off until a message with the bo
 
 ## Get current config
 
-Send a message to the `commands/<CLIENT_ID>` topic with the following payload:
+Send a message to the `commands/displays/<CLIENT_ID>` topic with the following payload:
 
 ```json
 {
@@ -102,7 +102,7 @@ Send a message to the `commands/<CLIENT_ID>` topic with the following payload:
 And the current contents of `config.json` will be published to `logs/<CLIENT_ID>` so you can see how a given board is configured.
 
 ## Get system info
-Send a message to the `commands/<CLIENT_ID>` topic with the following payload:
+Send a message to the `commands/displays/<CLIENT_ID>` topic with the following payload:
 
 ```json
 {
@@ -113,10 +113,11 @@ Send a message to the `commands/<CLIENT_ID>` topic with the following payload:
 And a message will be published to to `logs/<CLIENT_ID>` with the MicroPython version of the board, the value of `gc.free_mem()`, and how much free space is available on the root volume.
 
 ## Updating configuration
-Send a message to the `commands/<CLIENT_ID>` topic with the following payload:
+Send a message to the `commands/displays/<CLIENT_ID>` topic with the following payload:
 
 ```json
 {
+    "command": "update_config",
     "config": {
         "server": "<broker-address>"
     }
@@ -138,7 +139,7 @@ To _remove_ a configuration option, send the configuration option with an empty 
 Note that the _required_ options (`client_id`, `server`, `port`, `ssid`, and `wifi_pw`) cannot be deleted, only updated to new values.
 
 ## Restarting the board
-Send a message to the `commands/<CLIENT_ID>` topic with the following payload:
+Send a message to the `commands/displays/<CLIENT_ID>` topic with the following payload:
 
 ```json
 {
