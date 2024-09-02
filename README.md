@@ -130,6 +130,7 @@ To _remove_ a configuration option, send the configuration option with an empty 
 
 ```json
 {
+    "command": "update_config",
     "config": {
         "ntp_server": ""
     }
