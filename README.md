@@ -1,5 +1,11 @@
 # esp32-environmental-status
 
+⚠️ This repository is no longer being updated as the functionality has been rolled into my [esp32-sensor-reader-mqtt](https://github.com/VirtualWolf/esp32-sensor-reader-mqtt/) project.
+
+Original README follows below:
+
+---
+
 This is an application for an ESP32 (or a Raspberry Pi Pico W) hooked up to a [PiicoDev 3x RGB LED module](https://core-electronics.com.au/piicodev-3x-rgb-led-module.html) to display a colour representation of up to three different measurements received via JSON from MQTT topics. I'm using it with the data received from my [esp32-sensor-reader-mqtt](https://github.com/VirtualWolf/esp32-sensor-reader-mqtt/) devices.
 
 # Configuration
